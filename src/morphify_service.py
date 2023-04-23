@@ -2,8 +2,7 @@ import os
 import pathlib
 import shutil
 
-from flask import Flask, request, flash, redirect, render_template, send_file, \
-    after_this_request
+from flask import Flask, request, flash, redirect, render_template, send_file
 import uuid
 
 from constants import Constants
@@ -59,4 +58,5 @@ def upload_file():
             shutil.rmtree(data_folder)
     return \
         render_template('index.html',
+                        mix_backgrounds=Constants.MIX_BACKGROUNDS,
                         accept_extensions=','.join(Constants.IMAGE_EXTENSIONS))
