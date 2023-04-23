@@ -1,0 +1,23 @@
+<!doctype html>
+<title>Select files for morphing</title>
+<body>
+<h1>Select files for morphing</h1>
+<form method=post enctype=multipart/form-data>
+    <div>
+        <h4>Select I/Friend files (names with code):</h4>
+        <input type=file name=input_files multiple=multiple
+               accept="{{  accept_extensions  }}">
+    </div>
+
+    <div>
+        <h4>Select Stranger files (names without code):</h4>
+        <input type=file name=stranger_files multiple=multiple
+               accept="{{  accept_extensions  }}">
+    </div>
+
+    <div>
+        <h4></h4>
+        <input type=submit value=Generate>
+    </div>
+</form>
+</body>
