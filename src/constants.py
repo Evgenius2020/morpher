@@ -15,12 +15,12 @@ class Constants:
     MIX_BACKGROUNDS = False
 
     # Integer,
-    #   how many morphing levels should be generated,
-    #   (more than 3, because first and last levels skipped).
+    #   how many morphing levels should be generated
+    #   (>=3, since the first (0%) and the last (100%) levels will be skipped).
     MORPHING_LEVELS = 11
 
     # Possible image extensions.
-    #   Not sure that you can add something new to this.
+    #   Not sure that you can add something more to this.
     IMAGE_EXTENSIONS = ('.png', '.jpg', 'jpeg')
 
 
