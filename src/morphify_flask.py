@@ -6,7 +6,7 @@ from flask import Flask, request, flash, redirect, render_template, send_file
 import uuid
 
 from constants import Constants
-from morphify_cli import morphify
+from morphify import morphify
 
 UPLOAD_FOLDER = './uploads'
 
