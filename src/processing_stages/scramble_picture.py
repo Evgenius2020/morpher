@@ -1,6 +1,7 @@
 import os.path
 import random
 
+import click as click
 import cv2
 import numpy as np
 
@@ -51,10 +52,24 @@ def scramble_picture(img_path: str, add_noise=True) -> str:
     if add_noise:
         # Add some noise to img_dest
         img_dest[:, :, 3] += \
-            np.random.normal(0, 0.9, img_src.shape).astype(np.uint8)[:, :, 3]
+            np.random.normal(0, Constants.NOISE_LEVEL, img_src.shape). \
+                astype(np.uint8)[:, :, 3]
 
     # Save image, return path.
     img_path_filename, img_path_extension = os.path.splitext(img_path)
     img_dest_path = f'{img_path_filename}_s{img_path_extension}'
     cv2.imwrite(img_dest_path, img_dest)
     return img_dest_path
+
+
+@click.command()
+@click.option('--img-path',
+              type=click.Path(dir_okay=False, exists=True, readable=True),
+              prompt='Specify image to scramble',
+              help='Image path to scramble.')
+def scramble_picture_cli(img_path: str):
+    scramble_picture(img_path)
+
+
+if __name__ == '__main__':
+    scramble_picture_cli()

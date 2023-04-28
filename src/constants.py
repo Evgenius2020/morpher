@@ -33,6 +33,10 @@ class Constants:
     SCRAMBLING_SQUARES_VERTICAL = 10
     SCRAMBLING_SQUARES_HORIZONTAL = 10
 
+    # Float,
+    #   0 < x < 1, noise level (standard deviation of normal distribution).
+    NOISE_LEVEL = 0.7
+
 
 # Person and mood tags used in pictures naming.
 class Person(Enum):

@@ -58,6 +58,8 @@ def run_facemorpher(working_paths: WorkingPaths):
             frame_right_filename = os.path.join(
                 working_paths.output_folder,
                 f'{opposite.value}_{mood.value}_{frame_number - 1}.png')
+            if os.path.exists(frame_right_filename):
+                os.remove(frame_right_filename)
             os.rename(
                 frame_generated_filename,
                 frame_right_filename
