@@ -9,5 +9,5 @@ COPY src .
 
 EXPOSE 80
 
-CMD ["python3", "-m" , "flask", "--app=morphify_service", \
+CMD ["python3", "-m" , "flask", "--app=morphify_flask", \
     "run", "--host=0.0.0.0", "--port=80", "--debug"]

@@ -1,27 +1,18 @@
 import os
 import pathlib
 import re
-from dataclasses import dataclass
 
 from constants import Constants, Person, Mood
-
-
-@dataclass
-class Paths:
-    # All pictures paths (person, mood) -> path.
-    input_paths: dict[(Person, Mood), str]
-
-    # Path of output folder (created catalog with code already)
-    output_folder: str
+from processing_stages.working_paths import WorkingPaths
 
 
 def validate_dirs_and_get_paths(input_dir: str,
                                 stranger_dir: str,
-                                output_dir: str) -> Paths:
+                                output_dir: str) -> WorkingPaths:
     """
     Checks that all input files are exists and valid.
-    For disabled OVERWRITE_MODE, checks that output_dir is not exists.
-    Returns code (common prefix of files in input_dir matching CODE_REGEX).
+        For disabled OVERWRITE_MODE, checks that output_dir is not exists.
+        Returns paths of original photos and output_folder (output_dir/<code>).
     """
     # Check input_dir, get code.
     assert os.path.exists(input_dir), \
@@ -89,8 +80,8 @@ def validate_dirs_and_get_paths(input_dir: str,
     pathlib.Path(output_folder_with_code).mkdir(exist_ok=True, parents=True)
 
     # Pack paths: for every person-mood pair get path to picture.
-    # (And output folder is also needed).
-    return Paths(
+    #   (And output folder is also needed).
+    return WorkingPaths(
         input_paths={
             (person, mood):
                 os.path.join(
